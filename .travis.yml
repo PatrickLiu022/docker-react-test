@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - '14'
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t patrickliu022/docker-react-test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true patrickliu022/docker-react-test npm run test
